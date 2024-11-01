@@ -25,9 +25,9 @@ config = {
     'attn_dropout': 0.1,
     'mlp_dropout': 0.1,
     'depth': 6,
-    'vocab_size': 30000,
+    'vocab_size': bert_tokenizer.get_vocab_size(),  # Set to tokenizer vocabulary size
     'max_len': 128,
-    'pad_token_id': 0  # Set to 0 explicitly
+    'pad_token_id': bert_tokenizer.token_to_id('<pad>')
 }
 
 # Initialize model
