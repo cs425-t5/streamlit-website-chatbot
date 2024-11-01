@@ -9,7 +9,7 @@ st.caption(
 
 # Who is the best basketball player?
 if user_query := st.text_input(
-    label="Ask a question about Rugby, Soccer or Basketball! 🏀",
+    label="Ask a question about Rugby 🏉, Soccer ⚽ or Basketball 🏀!",
     placeholder="How many field goals did Kobe Bryant score?",
 ):
     # Get the answers
