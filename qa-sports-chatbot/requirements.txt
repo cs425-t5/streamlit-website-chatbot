@@ -1,0 +1,10 @@
+# main
+# streamlit # commented to avoid miss instalation
+
+datasets==2.18.0
+numpy==1.26.4
+sentence-transformers==2.7.0
+streamlit==1.39.0
+transformers==4.46.1
+tokenizers==0.20.1
+torch==2.2.2
