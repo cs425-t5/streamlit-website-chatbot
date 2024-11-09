@@ -2,7 +2,7 @@
 import streamlit as st
 import torch
 import torch.nn as nn
-from model import Seq2SeqTransformer
+from model_mul import Seq2SeqTransformer
 
 from tokenizers import Tokenizer
 from tokenizers import decoders
@@ -19,26 +19,30 @@ bert_tokenizer = Tokenizer.from_file('tokenizer/sportsQA_context.json')
 device = torch.device('cpu')
 
 # Load the saved model configuration
-config = {
-    'dim': 768,
-    'n_heads': 12,
-    'attn_dropout': 0.1,
-    'mlp_dropout': 0.1,
-    'depth': 6,
-    'vocab_size': bert_tokenizer.get_vocab_size(),  # Set to tokenizer vocabulary size
-    'max_len': 128,
-    'pad_token_id': bert_tokenizer.token_to_id('<pad>')
+config = { 
+    'dim': 512, 
+    'n_heads': 8, 
+    'attn_dropout': 0.1, 
+    'mlp_dropout': 0.1, 
+    'depth': 6, 
+    'vocab_size': bert_tokenizer.get_vocab_size(),  # Set to tokenizer vocabulary size 
+    'max_len': 128, 
+    'pad_token_id': bert_tokenizer.token_to_id('<pad>') 
 }
 
 # Initialize model
 model = Seq2SeqTransformer(config)
 
 # Load the state dictionary
-state_dict = torch.load('best_model.pt', map_location=device)
+state_dict = torch.load('best_model_mul-512.pt', map_location=device)
+
+new_state_dict = {}
+
 model.load_state_dict(state_dict)
 model.eval()
 
 def generate_ans(text_input):
+
     if text_input is not None:
         try:
             # Debug prints

@@ -2,7 +2,7 @@
 import streamlit as st
 import torch
 import torch.nn as nn
-from model import Seq2SeqTransformer
+from model_mul import Seq2SeqTransformer
 
 from tokenizers import Tokenizer
 from tokenizers import decoders
@@ -34,11 +34,15 @@ config = {
 model = Seq2SeqTransformer(config)
 
 # Load the state dictionary
-state_dict = torch.load('best_model.pt', map_location=device)
+state_dict = torch.load('best_model_mul-768-12-6.pt', map_location=device)
+
+new_state_dict = {}
+
 model.load_state_dict(state_dict)
 model.eval()
 
 def generate_ans(text_input):
+
     if text_input is not None:
         try:
             # Debug prints

@@ -3,3 +3,5 @@
 __pycache__/
 
 qa-sports-chatbot/best_model.pt
+
+*.pt
