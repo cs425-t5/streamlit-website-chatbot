@@ -6,7 +6,7 @@ import utils_model3
 # Streamlit UI
 st.subheader("Sports QA Chatbot 💬", divider="rainbow")
 st.caption(
-    """Chatbot using :rainbow[cross attention and self-attention]"""
+    """Chatbot using :rainbow[scaled dot prodict attention]"""
 )
 
 # Model input
