@@ -62,8 +62,10 @@ class MultiheadAttention(nn.Module):
         self.out_proj = nn.Linear(dim, dim, bias=False)
         
         # Add weight matrix W
-        self.W = nn.Parameter(torch.Tensor(self.head_dim, self.head_dim))
-        nn.init.xavier_uniform_(self.W)
+        self.W1 = nn.Parameter(torch.Tensor(self.head_dim, self.head_dim))
+        self.W2 = nn.Parameter(torch.Tensor(self.head_dim, self.head_dim))
+        nn.init.xavier_uniform_(self.W1)
+        nn.init.xavier_uniform_(self.W2)
 
     def forward(self, q, k, v, mask=None):
         batch, t, c = q.shape
@@ -75,7 +77,8 @@ class MultiheadAttention(nn.Module):
         v = v.view(batch, v.size(1), self.n_heads, self.head_dim).permute(0, 2, 1, 3)
         
         # Apply weight matrix W
-        q = torch.matmul(q, self.W)
+        q = torch.matmul(q, self.W1)
+        k = torch.matmul(k, self.W2)
         
         qkT = torch.matmul(q, k.transpose(-1, -2)) * self.scale
         qkT = self.attn_dropout(qkT)

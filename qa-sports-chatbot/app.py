@@ -15,7 +15,7 @@ if user_query1 := st.text_input(
     label="Ask a question about Rugby 🏉, Soccer ⚽ or Basketball 🏀!",
     placeholder="How many field goals did Kobe Bryant score?"
 ):
-    with st.spinner("Waiting", key="one"):
+    with st.spinner("Waiting"):
         answer = utils.generate_ans(user_query1)
         st.divider()
 
@@ -28,12 +28,12 @@ if user_query2 := st.text_input(
     label="Ask a question about Rugby 🏉, Soccer ⚽ or Basketball 🏀!",
     placeholder="How many field goals did Kobe Bryant score?"
 ):
-    with st.spinner("Waiting", key = "two"):
+    with st.spinner("Waiting"):
         answer = utils_model2.generate_ans(user_query2)
         st.divider()
 
 st.caption(
-    """Chatbot using :rainbow[multiplicative attention] with 512 dim"""
+    """Chatbot using :rainbow[custom attention]"""
 )
 
 if user_query3 := st.text_input(
@@ -41,6 +41,6 @@ if user_query3 := st.text_input(
     label="Ask a question about Rugby 🏉, Soccer ⚽ or Basketball 🏀!",
     placeholder="How many field goals did Kobe Bryant score?"
 ):
-    with st.spinner("Waiting", key="three"):
+    with st.spinner("Waiting"):
         answer = utils_model3.generate_ans(user_query3)
         st.divider()
