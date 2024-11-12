@@ -15,7 +15,7 @@ if user_query1 := st.text_input(
     label="Ask a question about Rugby 🏉, Soccer ⚽ or Basketball 🏀!",
     placeholder="How many field goals did Kobe Bryant score?"
 ):
-    with st.spinner("Waiting"):
+    with st.spinner("Waiting", key="one"):
         answer = utils.generate_ans(user_query1)
         st.divider()
 
@@ -28,7 +28,7 @@ if user_query2 := st.text_input(
     label="Ask a question about Rugby 🏉, Soccer ⚽ or Basketball 🏀!",
     placeholder="How many field goals did Kobe Bryant score?"
 ):
-    with st.spinner("Waiting"):
+    with st.spinner("Waiting", key = "two"):
         answer = utils_model2.generate_ans(user_query2)
         st.divider()
 
@@ -41,6 +41,6 @@ if user_query3 := st.text_input(
     label="Ask a question about Rugby 🏉, Soccer ⚽ or Basketball 🏀!",
     placeholder="How many field goals did Kobe Bryant score?"
 ):
-    with st.spinner("Waiting"):
+    with st.spinner("Waiting", key="three"):
         answer = utils_model3.generate_ans(user_query3)
         st.divider()
