@@ -6,9 +6,15 @@ import utils_model3
 # Streamlit UI
 st.subheader("Sports QA Chatbot 💬", divider="rainbow")
 st.caption(
-    """Chatbot using :rainbow[scaled dot prodict attention]"""
+    """Chatbot using :rainbow[scaled dot product attention]"""
 )
 
+# How many franchises were created at the founding of the WNBA in 1997? 
+# What was Yao Ming's height in his rookie year in the Chinese Basketball Association?
+# What is the most important game in the year?
+# Question: How many points did Portland have in the third quarter? 
+# Answer: eighteen 
+# ModelAnswer: 15
 # Model input
 if user_query1 := st.text_input(
     key="one",

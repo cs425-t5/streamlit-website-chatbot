@@ -34,15 +34,13 @@ config = {
 model = Seq2SeqTransformer(config)
 
 # Load the state dictionary
-state_dict = torch.load('best_model.pt', map_location=device)
+state_dict = torch.load('best_model_scaledDotProd_100k.pt', map_location=device)
 model.load_state_dict(state_dict)
 model.eval()
 
 def generate_ans(text_input):
     if text_input is not None:
         try:
-            # Debug prints
-            print(bert_tokenizer.encode(f"<bos>{text_input}<eos>"))
             input_ids = bert_tokenizer.encode(f"<bos>{text_input}<eos>").ids
             input_ids = torch.tensor(input_ids,dtype=torch.long).unsqueeze(0)
 
